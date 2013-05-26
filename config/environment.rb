@@ -18,8 +18,6 @@ require 'logger'
 require 'sinatra'
 require "sinatra/reloader" if development?
 
-
-
 require 'faker'
 require 'erb'
 require 'bcrypt'
@@ -28,8 +26,8 @@ require 'bcrypt'
 APP_ROOT = Pathname.new(File.expand_path('../../', __FILE__))
 APP_NAME = APP_ROOT.basename.to_s
 set :root, APP_ROOT
-require 'carrierwave'
-require 'carrierwave/orm/activerecord'
+# require 'carrierwave'
+# require 'carrierwave/orm/activerecord'
 
 # Set up the controllers and helpers
 Dir[APP_ROOT.join('app', 'uploaders', '*.rb')].each { |file| require file }
