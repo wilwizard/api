@@ -148,7 +148,7 @@ desc "Run the specs"
 RSpec::Core::RakeTask.new(:spec)
 
 desc "Putain bordel de merde, fils de pute va te faire foutre"
-task "fuckyou" do
+task "mike" do
   require APP_ROOT.join('config','helper.rb')
 end
 
