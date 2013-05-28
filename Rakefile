@@ -98,6 +98,12 @@ namespace :db do
     system("dropdb #{DB_NAME}")
   end
 
+  desc "Drop the database at #{DB_NAME}"
+  task :drop do
+    puts "Dropping #{DB_NAME}..."
+    system("dropdb #{DB_NAME}")
+  end
+
   desc "Migrate the database (options: VERSION=x, VERBOSE=false, SCOPE=blog)."
   task :migrate do
     ActiveRecord::Migrator.migrations_paths << File.dirname(__FILE__) + 'db/migrate'
