@@ -7,3 +7,10 @@
 th {
   text-align: left;
 }
+
+#map-canvas {
+
+  width: 600px;
+  height: 600px;
+
+}
