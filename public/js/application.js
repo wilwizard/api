@@ -14,21 +14,17 @@ function randCord(){
 }
 
 function getAddress(){
-  var street = $("#address").find(":nth-child(1)").val();
-  var city = $("#address").find(":nth-child(2)").val();
-  var state = $("#address").find(":nth-child(3)").val();
-  return street+" "+city+" "+state;
+  var address = $("#address").children().val();
+  return address;
 }
 
-function setMarker(cordinates){
-  
-
-
+function newMarker(cordinates){
+  new google.maps.Marker({position: cordinates, map: map});
+  map.panTo(cordinates);
 }
 
 $(document).ready(function() {
 
-  // rand from 90 to -90
 
   var mapOptions = {
     zoom: 8,
@@ -37,8 +33,7 @@ $(document).ready(function() {
   };
 
   var geocoder = new google.maps.Geocoder();
-
-  var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+  map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
 
   var markerOptions = {
     position: map.getCenter(),
@@ -49,21 +44,16 @@ $(document).ready(function() {
 
   $("#spin").on("submit", function(event){
     event.preventDefault();
-    var cord = randCord();
-    new google.maps.Marker({position: cord, map: map});
-    map.panTo(cord);
+    newMarker(randCord());
   });
 
   $("#address").on("submit", function(event){
     event.preventDefault();
     geocoder.geocode({address: getAddress()}, function(results){
-
-      console.log(results[0]);
+    newMarker(results[0].geometry.location);
     });
 
   });
-
-
 
 });
 
